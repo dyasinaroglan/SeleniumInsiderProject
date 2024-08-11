@@ -3,6 +3,7 @@ package pageElements;
 import methods.BaseMethods;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 
 public class QAPositionsPage extends BaseMethods {
 
@@ -12,6 +13,9 @@ public class QAPositionsPage extends BaseMethods {
     private final By qualityAssurance = By.xpath("(//*[text()='Quality Assurance'])[5]");
 
     private final By hoverQualityAssurance = By.xpath("(//div[@class='position-list-item-wrapper bg-light']/p)[1]");
+
+    private final By allQualityAssuranceText = By.xpath("//div[@class='position-list-item-wrapper bg-light']/p[contains(text(), 'Assurance Engineer')]");
+    private final By allIstanbulTurkeyText = By.xpath("//div[contains(text(), 'Istanbul, Turkey')]");
     private final By viewRoleButton = By.xpath("//a[@href='https://jobs.lever.co/useinsider/78ddbec0-16bf-4eab-b5a6-04facb993ddc']");
     public QAPositionsPage(WebDriver driver) {
         super(driver);
@@ -39,5 +43,15 @@ public class QAPositionsPage extends BaseMethods {
     public void viewRoleClick() throws InterruptedException {
         sleep(1);
         clickTo(viewRoleButton);
+    }
+    public WebElement locationIstanbulControl(){
+        return findElement(locationIstanbulTurkey);
+    }
+    public WebElement departmentQAssuranceControl(){
+        return findElement(qualityAssurance);
+    }
+    public void assertText(){
+        asserTextElements(allQualityAssuranceText,"Assurance Engineer");
+        asserTextElements(allIstanbulTurkeyText,"Istanbul, Turkey");
     }
 }

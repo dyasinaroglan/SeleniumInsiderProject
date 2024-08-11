@@ -11,7 +11,6 @@ public class CareersPage extends BaseMethods {
     private final By lifeAtInsider = By.xpath("//*[text()='Life at Insider']");
     private final By seeAllTeams = By.xpath("//*[text()='See all teams']");
     private final By scrollFindYourCalling = By.xpath("//h3[contains(.,'Find your calling')]");
-
     private final By QAclick = By.xpath("//*[text()='Quality Assurance']");
     private final By seeAllQAJobs = By.cssSelector("div[class='button-group d-flex flex-row'] a");
 
@@ -40,5 +39,8 @@ public class CareersPage extends BaseMethods {
     }
     public void clickSeeAllQaJobs(){
         clickTo(seeAllQAJobs);
+    }
+    public WebElement ourLocationsControl(){
+        return findElement(ourLocations).findElement(lifeAtInsider).findElement(seeAllTeams);
     }
 }

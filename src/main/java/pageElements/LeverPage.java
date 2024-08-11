@@ -1,6 +1,7 @@
 package pageElements;
 
 import methods.BaseMethods;
+import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -18,5 +19,6 @@ public class LeverPage extends BaseMethods {
     public void leverPageApplyForThisJob() throws InterruptedException {
         sleep(1);
         elementVisible(applyForThisJobButton);
+        Assert.assertNotNull("APPLY FOR THIS JOB butonu başarılı bir şekilde görüntülendi",applyForThisJobButton);
     }
 }

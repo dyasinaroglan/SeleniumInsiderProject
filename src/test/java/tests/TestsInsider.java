@@ -28,21 +28,25 @@ public class TestsInsider extends Driver {
         QAPositionsPage qaPositionsPage = new QAPositionsPage(driver);
         LeverPage leverPage = new LeverPage(driver);
 
-        Assertions.assertNotNull(homePage.insiderLogo, "Ana sayfa başarılı bir şekilde yüklenmedi");
-
+        Assertions.assertNotNull(homePage.anaSayfaControl(), "Ana sayfa başarılı bir şekilde yüklenmedi");
+        homePage.anaSayfaGiris();
         homePage.acceptAllCookies();
         homePage.companyClick();
         homePage.careersClick();
 
         careersPage.careersPageElementControl();
+        Assertions.assertNotNull(careersPage.ourLocationsControl());
         careersPage.scrollToElement();
         careersPage.clickSeeAllTeams();
         careersPage.clickQA();
         careersPage.clickSeeAllQaJobs();
 
         qaPositionsPage.filterByLocation();
+        Assertions.assertNotNull(qaPositionsPage.locationIstanbulControl());
         qaPositionsPage.filterByDepartment();
+        Assertions.assertNotNull(qaPositionsPage.departmentQAssuranceControl());
         qaPositionsPage.viewRoleHover();
+        qaPositionsPage.assertText();
         qaPositionsPage.viewRoleClick();
 
         leverPage.switchToNewTab();
