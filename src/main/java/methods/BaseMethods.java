@@ -1,5 +1,6 @@
 package methods;
 
+import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.NoSuchElementException;
@@ -23,7 +24,7 @@ public class BaseMethods extends Driver {
 
     Actions actions;
 
-    public   JavascriptExecutor js;
+    public JavascriptExecutor js;
     public BaseMethods(WebDriver driver){
         this.driver = driver;
         this.wait = new FluentWait<>(this.driver).withTimeout(Duration.ofSeconds(15)).pollingEvery(Duration.ofSeconds(5)).ignoring(NoSuchElementException.class);
@@ -61,5 +62,23 @@ public class BaseMethods extends Driver {
         WebElement element = driver.findElement(locator);
         actions.moveToElement(element).perform();
         logger.info("Mouse, elementin üzerine getirildi: Locator: {}", locator);
+    }
+    public void javascriptClickTo(By locator){
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("arguments[0].click();", locator);
+    }
+    public void switchToNewTab(){
+        String firstWindow = driver.getWindowHandle();
+        for (String windowHandle : driver.getWindowHandles()){
+            if(!windowHandle.equals(firstWindow)){
+                driver.switchTo().window(windowHandle);
+                break;
+            }
+        }
+        logger.info("Yeni sekmeye başarıyla geçildi: Title: {}", driver.getTitle());
+    }
+    public void verifyPageTitle(String expectedTitle){
+        String actualTitle = driver.getTitle();
+        Assert.assertEquals(actualTitle,expectedTitle, "Sayfa başlığı beklendiği gibi değil!");
     }
 }

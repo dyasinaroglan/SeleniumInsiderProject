@@ -6,7 +6,7 @@ import org.openqa.selenium.WebDriver;
 
 public class QAPositionsPage extends BaseMethods {
 
-    private final By allButtonLocation = By.id("select2-filter-by-location-container");
+    private final By allButtonLocation = By.xpath("(//span[@class='select2-selection select2-selection--single'])[1]");
     private final By locationIstanbulTurkey = By.xpath("//li[contains(.,'Istanbul, Turkey')]");
     private final By allButtonDepartment = By.id("select2-filter-by-department-container");
     private final By qualityAssurance = By.xpath("(//*[text()='Quality Assurance'])[5]");
@@ -39,7 +39,5 @@ public class QAPositionsPage extends BaseMethods {
     public void viewRoleClick() throws InterruptedException {
         sleep(1);
         clickTo(viewRoleButton);
-
-        sleep(2);
     }
 }
