@@ -17,7 +17,7 @@
         <selenium.version>4.18.1</selenium.version>
         <webdrivermanager.version>5.5.0</webdrivermanager.version>
         <testng.version>7.8.0</testng.version>
-        <slf4j.version>2.0.9</slf4j.version>
+        <log4j.version>1.7.30</log4j.version>
         <mysql.version>8.0.33</mysql.version>
     </properties>
 
@@ -47,7 +47,7 @@
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-log4j12</artifactId>
-            <version>${slf4j.version}</version>
+            <version>${log4j.version}</version>
         </dependency>
 
         <dependency>
@@ -78,12 +78,14 @@
             <version>4.18.1</version>
             <scope>compile</scope>
         </dependency>
+
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter</artifactId>
-            <version>RELEASE</version>
+            <version>5.10.2</version>
             <scope>test</scope>
         </dependency>
+
 
     </dependencies>
 </project>

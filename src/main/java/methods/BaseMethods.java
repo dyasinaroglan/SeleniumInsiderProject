@@ -27,6 +27,7 @@ public class BaseMethods {
     }
     public void clickTo(By locator) {
         wait.until(ExpectedConditions.elementToBeClickable(locator)).click();
+        logger.info("elementine tıklandı");
 
     }
     public void sendKeys(By locator, String text){
