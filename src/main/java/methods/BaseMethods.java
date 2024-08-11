@@ -9,15 +9,16 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import utils.Driver;
 
 import java.time.Duration;
 
-public class BaseMethods {
+import static com.mysql.cj.conf.PropertyKey.logger;
+
+public class BaseMethods extends Driver {
 
     public WebDriver driver;
     public FluentWait<WebDriver> wait;
-
-    protected Logger logger = LoggerFactory.getLogger(getClass());
 
     public   JavascriptExecutor js;
     public BaseMethods(WebDriver driver){
@@ -46,6 +47,10 @@ public class BaseMethods {
     }
     public void sleep(int second) throws InterruptedException {
         Thread.sleep(second * 1000);
+    }
+    public void scrollByAmount(int x, int y) {
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("window.scrollBy(arguments[0], arguments[1]);", x, y);
     }
 
 }

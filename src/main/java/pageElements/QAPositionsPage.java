@@ -15,6 +15,7 @@ public class QAPositionsPage extends BaseMethods {
     }
 
     public void filterByLocation() throws InterruptedException {
+        scrollByAmount(0,50);
         sleep(3);
         clickTo(allButtonLocation);
         sleep(3);
@@ -24,6 +25,7 @@ public class QAPositionsPage extends BaseMethods {
         sleep(3);
         clickTo(allButtonDepartment);
         sleep(3);
+        sleep(1);
         elementVisible(qualityAssurance);
     }
 }

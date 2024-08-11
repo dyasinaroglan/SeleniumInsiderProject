@@ -19,6 +19,8 @@ public class Driver {
 
     public WebDriver driver;
 
+    protected Logger logger = LoggerFactory.getLogger(getClass());
+
     @Before
     public void startDriver(){
         drivers(Browsers.CHROME);
