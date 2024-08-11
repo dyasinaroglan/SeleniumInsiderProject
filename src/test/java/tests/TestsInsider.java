@@ -46,6 +46,9 @@ public class TestsInsider extends Driver {
         qaPositionsPage.filterByLocation();
         qaPositionsPage.filterByDepartment();
 
+        qaPositionsPage.viewRoleHover();
+        qaPositionsPage.viewRoleClick();
+
     }
 
 }

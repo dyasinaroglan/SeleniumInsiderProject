@@ -5,6 +5,7 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.slf4j.Logger;
@@ -20,11 +21,14 @@ public class BaseMethods extends Driver {
     public WebDriver driver;
     public FluentWait<WebDriver> wait;
 
+    Actions actions;
+
     public   JavascriptExecutor js;
     public BaseMethods(WebDriver driver){
         this.driver = driver;
         this.wait = new FluentWait<>(this.driver).withTimeout(Duration.ofSeconds(15)).pollingEvery(Duration.ofSeconds(5)).ignoring(NoSuchElementException.class);
         this.js = (JavascriptExecutor) driver;
+        this.actions = actions;
     }
     public void clickTo(By locator) {
         wait.until(ExpectedConditions.elementToBeClickable(locator)).click();
@@ -52,5 +56,10 @@ public class BaseMethods extends Driver {
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("window.scrollBy(arguments[0], arguments[1]);", x, y);
     }
-
+    public void hoverOverElement(By locator){
+        actions = new Actions(driver);
+        WebElement element = driver.findElement(locator);
+        actions.moveToElement(element).perform();
+        logger.info("Mouse, elementin üzerine getirildi: Locator: {}", locator);
+    }
 }
