@@ -7,7 +7,7 @@ import org.openqa.selenium.WebElement;
 
 public class QAPositionsPage extends BaseMethods {
 
-    private final By allButtonLocation = By.xpath("(//span[@class='select2-selection select2-selection--single'])[1]");
+    private final By allButtonLocation = By.cssSelector("span[id='select2-filter-by-location-container']");
     private final By locationIstanbulTurkey = By.xpath("//li[contains(.,'Istanbul, Turkey')]");
     private final By allButtonDepartment = By.id("select2-filter-by-department-container");
     private final By qualityAssurance = By.xpath("(//*[text()='Quality Assurance'])[5]");
@@ -23,7 +23,9 @@ public class QAPositionsPage extends BaseMethods {
 
     public void filterByLocation() throws InterruptedException {
         scrollByAmount(0,200);
-        sleep(1);
+        sleep(2);
+        clickTo(allButtonLocation);
+        clickTo(allButtonLocation);
         clickTo(allButtonLocation);
         sleep(1);
         elementVisible(locationIstanbulTurkey);
