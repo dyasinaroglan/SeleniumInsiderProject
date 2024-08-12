@@ -20,7 +20,7 @@ public class QAPositionsPage extends BaseMethods {
 
     public void filterByLocation() throws InterruptedException {
         scrollByAmount(0,200);
-        sleep(5);
+        sleep(3);
         clickTo(allButtonLocation);
         sleep(1);
         elementVisible(locationIstanbulTurkey);
@@ -28,7 +28,7 @@ public class QAPositionsPage extends BaseMethods {
 
     }
     public void filterByDepartment() throws InterruptedException {
-        sleep(4);
+        sleep(3);
         clickTo(allButtonDepartment);
         sleep(2);
         elementVisible(selectDepartment);
