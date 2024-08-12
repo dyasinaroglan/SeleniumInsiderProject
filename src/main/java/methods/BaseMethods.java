@@ -66,9 +66,15 @@ public class BaseMethods extends Driver {
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("window.scrollBy(arguments[0], arguments[1]);", x, y);
     }
-    public void javascriptClickTo(By locator){
-        JavascriptExecutor js = (JavascriptExecutor) driver;
-        js.executeScript("arguments[0].click();", locator);
+    public void selectFromDropdownAndClick(By locator, String visibleText){
+        WebElement dropdownElement = driver.findElement(locator);
+        Select dropDown = new Select(dropdownElement);
+        dropDown.selectByVisibleText(visibleText);
+        logger.info("Dropdown'dan '{}' seçildi.", visibleText);
+
+        WebElement selectedOption = dropDown.getFirstSelectedOption();
+        selectedOption.click();
+        logger.info("Seçilen '{}' öğesine tıklandı.", visibleText);
     }
     public void switchToNewTab(){
         String firstWindow = driver.getWindowHandle();
