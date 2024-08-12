@@ -39,8 +39,7 @@ public class BaseMethods extends Driver {
     }
     public void clickTo(By locator) {
         wait.until(ExpectedConditions.elementToBeClickable(locator)).click();
-        String text = findElement(locator).getText();
-        logger.info(text + " Clicked on the element.");
+        logger.info(" Clicked on the element.");
 
     }
     public void sendKeys(By locator, String text){
@@ -104,9 +103,10 @@ public class BaseMethods extends Driver {
             String actualText = element.getText();
             if(actualText.contains(expectedText)){
                 isTextFound = true;
-                logger.info("Expected text '{}' was found within the element '{}'.", locator, expectedText);
+                logger.info("Expected text was found within the element " + locator + " " + expectedText);
             }else {
-                logger.warn("Expected text '{}' was not found within the element '{}'. Current text: '{}'", locator, expectedText, actualText);
+                logger.warn("Expected text was not found within the element. Current text: ", locator, expectedText, actualText);
+                logger.warn("Expected text was not found within the element. Current text: " + locator + " " + expectedText + " " + actualText);
             }
         }
         assertTrue("No element contains the expected text " + expectedText, isTextFound);
