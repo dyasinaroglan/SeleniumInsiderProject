@@ -51,6 +51,7 @@ public class TestsInsider extends Driver {
 
         leverPage.switchToNewTab();
         leverPage.leverPageApplyForThisJob();
+        Assert.assertNotNull("The 'APPLY FOR THIS JOB' button was successfully displayed.",leverPage.applyForThisJobButtonAssert());
 
     }
 

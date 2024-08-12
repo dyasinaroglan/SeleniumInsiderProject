@@ -4,6 +4,7 @@ import methods.BaseMethods;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 
 public class LeverPage extends BaseMethods {
 
@@ -16,9 +17,11 @@ public class LeverPage extends BaseMethods {
         switchToNewTab();
         verifyPageTitle("Insider. - Senior Software Quality Assurance Engineer");
     }
+    public WebElement applyForThisJobButtonAssert(){
+        return findElement(applyForThisJobButton);
+    }
     public void leverPageApplyForThisJob() throws InterruptedException {
         sleep(1);
         elementVisible(applyForThisJobButton);
-        Assert.assertNotNull("APPLY FOR THIS JOB butonu başarılı bir şekilde görüntülendi",applyForThisJobButton);
     }
 }
