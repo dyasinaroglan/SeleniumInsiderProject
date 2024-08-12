@@ -7,7 +7,7 @@ import org.openqa.selenium.WebDriver;
 
 public class LeverPage extends BaseMethods {
 
-    private final By applyForThisJobButton = By.xpath("(//*[text()='Apply for this job'])[1]");
+    private final By applyForThisJobButton = By.xpath("//div[@class='postings-btn-wrapper']//*[text()='Apply for this job']");
     public LeverPage(WebDriver driver) {
         super(driver);
     }

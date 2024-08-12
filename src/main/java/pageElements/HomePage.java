@@ -10,7 +10,7 @@ public class HomePage extends BaseMethods{
 
     private final By insiderLogo = By.cssSelector("a[class='navbar-brand d-flex flex-row align-items-center'] img");
     private final By companyButton = By.cssSelector("ul[class='navbar-nav'] li:nth-child(6)");
-    private final By careersButton = By.cssSelector(".new-menu-dropdown-layout-6-mid-container a:nth-child(2)");
+    private final By careersButton = By.cssSelector(".new-menu-dropdown-layout-6-mid-container a[href='https://useinsider.com/careers/']");
     private final By cookies = By.id("wt-cli-accept-all-btn");
 
     public HomePage(WebDriver driver) {

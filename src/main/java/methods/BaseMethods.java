@@ -9,6 +9,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
+import org.openqa.selenium.support.ui.Select;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import utils.Driver;
@@ -17,6 +18,7 @@ import java.time.Duration;
 import java.util.List;
 
 import static com.mysql.cj.conf.PropertyKey.logger;
+import static org.junit.Assert.assertTrue;
 
 public class BaseMethods extends Driver {
 
@@ -64,12 +66,6 @@ public class BaseMethods extends Driver {
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("window.scrollBy(arguments[0], arguments[1]);", x, y);
     }
-    public void hoverOverElement(By locator){
-        actions = new Actions(driver);
-        WebElement element = driver.findElement(locator);
-        actions.moveToElement(element).perform();
-        logger.info("Mouse, elementin üzerine getirildi: Locator: {}", locator);
-    }
     public void javascriptClickTo(By locator){
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("arguments[0].click();", locator);
@@ -100,6 +96,6 @@ public class BaseMethods extends Driver {
                 logger.warn("Element '{}' içinde beklenen '{}' metni bulunamadı. Mevcut metin: '{}'", locator, expectedText, actualText);
             }
         }
-        Assert.assertTrue("Hiçbir element içinde beklenen metin bulunamadı: " + expectedText, isTextFound);
+        assertTrue("Hiçbir element içinde beklenen metin bulunamadı: " + expectedText, isTextFound);
     }
 }

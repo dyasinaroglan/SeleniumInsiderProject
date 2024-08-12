@@ -10,9 +10,7 @@ public class QAPositionsPage extends BaseMethods {
     private final By allButtonLocation = By.cssSelector("span[id='select2-filter-by-location-container']");
     private final By locationIstanbulTurkey = By.xpath("//li[contains(.,'Istanbul, Turkey')]");
     private final By allButtonDepartment = By.id("select2-filter-by-department-container");
-    private final By qualityAssurance = By.xpath("(//*[text()='Quality Assurance'])[5]");
-
-    private final By hoverQualityAssurance = By.xpath("(//div[@class='position-list-item-wrapper bg-light']/p)[1]");
+    private final By qualityAssurance = By.id("select2-filter-by-department-result-7bso-Quality Assurance");
 
     private final By allQualityAssuranceText = By.xpath("//div[@class='position-list-item-wrapper bg-light']/p[contains(text(), 'Assurance Engineer')]");
     private final By allIstanbulTurkeyText = By.xpath("//div[contains(text(), 'Istanbul, Turkey')]");
@@ -40,7 +38,6 @@ public class QAPositionsPage extends BaseMethods {
     }
     public void viewRoleHover(){
         scrollByAmount(0,350);
-        hoverOverElement(viewRoleButton);
     }
     public void viewRoleClick() throws InterruptedException {
         sleep(1);
