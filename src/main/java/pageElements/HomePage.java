@@ -26,7 +26,7 @@ public class HomePage extends BaseMethods{
 
     public void companyClick(){
         clickTo(companyButton);
-        logger.info("elementine tıklandı");
+        logger.info("Clicked on the element.");
     }
     public void acceptAllCookies(){
         clickTo(cookies);

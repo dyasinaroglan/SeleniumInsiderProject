@@ -40,6 +40,8 @@ public class QAPositionsPage extends BaseMethods {
     }
     public void viewRoleClick() throws InterruptedException {
         sleep(2);
+        hoverOverElement(viewRoleButton);
+        sleep(1);
         clickTo(viewRoleButton);
     }
     public WebElement locationIstanbulControl(){

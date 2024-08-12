@@ -28,7 +28,7 @@ public class TestsInsider extends Driver {
         QAPositionsPage qaPositionsPage = new QAPositionsPage(driver);
         LeverPage leverPage = new LeverPage(driver);
 
-        Assertions.assertNotNull(homePage.anaSayfaControl(), "Ana sayfa başarılı bir şekilde yüklenmedi");
+        Assertions.assertNotNull(homePage.anaSayfaControl(), "The homepage failed to load successfully.");
         homePage.anaSayfaGiris();
         homePage.acceptAllCookies();
         homePage.companyClick();

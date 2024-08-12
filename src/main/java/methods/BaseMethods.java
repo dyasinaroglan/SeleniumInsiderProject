@@ -39,42 +39,49 @@ public class BaseMethods extends Driver {
     }
     public void clickTo(By locator) {
         wait.until(ExpectedConditions.elementToBeClickable(locator)).click();
-        logger.info(locator.toString() + " elementine tıklandı");
+        String text = findElement(locator).getText();
+        logger.info(text + " Clicked on the element.");
 
     }
     public void sendKeys(By locator, String text){
         driver.findElement(locator).sendKeys(text);
-        logger.info(locator + " text değeri yazıldı.");
+        logger.info(text + " The value was entered.");
     }
     public void elementVisible(By locator){
         wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
-        logger.info("Element '{}' başarılı bir şekilde bulundu ve görünür hale geldi.", locator.toString());
+        logger.info("The element was successfully located and became visible.");
     }
     public void elementDisable(By locator){
          driver.findElement(locator).isDisplayed();
     }
     public void scrollTo(By locator){
         WebElement element = driver.findElement(locator);
+        String text = findElement(locator).getText();
         js.executeScript("arguments[0].scrollIntoView(false);", element);
-        logger.info("Element '{}' kaydırılarak görüntülendi.", locator.toString());
+        logger.info("Element " + text + " kaydırılarak görüntülendi.");
     }
     public void sleep(int second) throws InterruptedException {
         Thread.sleep(second * 1000);
-        logger.info(second + " saniye beklendi.");
+        logger.info(second + " Waited for seconds.");
     }
     public void scrollByAmount(int x, int y) {
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("window.scrollBy(arguments[0], arguments[1]);", x, y);
     }
+    public void hoverOverElement(By locator) {
+        Actions actions = new Actions(driver);
+        WebElement element = driver.findElement(locator);
+        actions.moveToElement(element).perform();
+    }
     public void selectFromDropdownAndClick(By locator, String visibleText){
         WebElement dropdownElement = driver.findElement(locator);
         Select dropDown = new Select(dropdownElement);
         dropDown.selectByVisibleText(visibleText);
-        logger.info("Dropdown'dan '{}' seçildi.", visibleText);
+        logger.info("Selected " + visibleText + " from the dropdown.", visibleText);
 
         WebElement selectedOption = dropDown.getFirstSelectedOption();
         selectedOption.click();
-        logger.info("Seçilen '{}' öğesine tıklandı.", visibleText);
+        logger.info("Clicked on the selected item: " + visibleText);
     }
     public void switchToNewTab(){
         String firstWindow = driver.getWindowHandle();
@@ -84,11 +91,11 @@ public class BaseMethods extends Driver {
                 break;
             }
         }
-        logger.info("Yeni sekmeye başarıyla geçildi: Title: {}", driver.getTitle());
+        logger.info("Successfully switched to the new tab: {}", driver.getTitle());
     }
     public void verifyPageTitle(String expectedTitle){
         String actualTitle = driver.getTitle();
-        Assert.assertEquals(actualTitle,expectedTitle, "Sayfa başlığı beklendiği gibi değil!");
+        Assert.assertEquals(actualTitle,expectedTitle, "The page title is not as expected!");
     }
     public void asserTextElements(By locator, String expectedText){
         List<WebElement> elements = wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(locator));
@@ -97,11 +104,11 @@ public class BaseMethods extends Driver {
             String actualText = element.getText();
             if(actualText.contains(expectedText)){
                 isTextFound = true;
-                logger.info("Element '{}' içinde beklenen '{}' metni bulundu.", locator, expectedText);
+                logger.info("Expected text '{}' was found within the element '{}'.", locator, expectedText);
             }else {
-                logger.warn("Element '{}' içinde beklenen '{}' metni bulunamadı. Mevcut metin: '{}'", locator, expectedText, actualText);
+                logger.warn("Expected text '{}' was not found within the element '{}'. Current text: '{}'", locator, expectedText, actualText);
             }
         }
-        assertTrue("Hiçbir element içinde beklenen metin bulunamadı: " + expectedText, isTextFound);
+        assertTrue("No element contains the expected text " + expectedText, isTextFound);
     }
 }
