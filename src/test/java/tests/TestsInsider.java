@@ -5,6 +5,7 @@ import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.testng.asserts.Assertion;
 import pageElements.CareersPage;
 import pageElements.HomePage;
@@ -19,7 +20,7 @@ import java.util.concurrent.TimeUnit;
 import static org.testng.TestRunner.PriorityWeight.priority;
 
 
-public class TestsInsider extends Driver {
+public class TestsInsider extends Driver{
 
     @Test()
     public void test1() throws InterruptedException {

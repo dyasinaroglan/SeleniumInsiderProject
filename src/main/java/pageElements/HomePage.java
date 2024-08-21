@@ -16,7 +16,7 @@ public class HomePage extends BaseMethods{
     public HomePage(WebDriver driver) {
         super(driver);
     }
-    public WebElement anaSayfaControl(){
+    public WebElement anaSayfaControl(){   //private locatolarlara erişmek için ve onları kullanmak için public metodlar yazılmıştır.
         return findElement(insiderLogo);
     }
     public void anaSayfaGiris(){

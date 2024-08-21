@@ -22,17 +22,24 @@ import static org.junit.Assert.assertTrue;
 
 public class BaseMethods extends Driver {
 
-    public WebDriver driver;
+    public WebDriver driver;   // burada herkes kafasına göre setlemesin, değer vermesin
     public FluentWait<WebDriver> wait;
 
     Actions actions;
 
     public JavascriptExecutor js;
     public BaseMethods(WebDriver driver){
-        this.driver = driver;
+        this.driver = driver; // hangi webDriver, constructor yapmazsak driver null olarak dönecek, bu driver Driver class'ından alınan driver demek istiyoruz
         this.wait = new FluentWait<>(this.driver).withTimeout(Duration.ofSeconds(15)).pollingEvery(Duration.ofSeconds(5)).ignoring(NoSuchElementException.class);
         this.js = (JavascriptExecutor) driver;
-        this.actions = actions;
+        /*
+        constructor'da driver adında bir parametre tanımlanmış bu parametrenin adı, sınıfın içinde tanımlanan driver instance değişkeni ile aynı
+        Eğer this kullanılmazsa Java hangi driver değişkeninin kullanılması gerektiğini anlayamaz. this.driver = driver; ifadesiyle class'da yer alan instance değişkeninin
+        constructor'dan gelen driver parametresiyle başlatılması gerektiğini belirtmiş oluyoruz.
+        this kullanılmasaydı driver değişkeni başlatılmamış olurdu ve null kalırdı
+
+        this anahtar kelimesi, sınıfın instance değişkenleri ile metod veya constructor içinde tanımlanan yerel değişkenler arasındaki karışıklığı önlemek için kullanılır.
+         */
     }
     public WebElement findElement (By locator){
         return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
