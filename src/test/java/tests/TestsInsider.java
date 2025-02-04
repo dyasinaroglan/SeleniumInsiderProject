@@ -20,7 +20,7 @@ import java.util.concurrent.TimeUnit;
 import static org.testng.TestRunner.PriorityWeight.priority;
 
 
-public class TestsInsider extends Driver{
+public class TestsInsider extends Driver {
 
     @Test()
     public void test1() throws InterruptedException {

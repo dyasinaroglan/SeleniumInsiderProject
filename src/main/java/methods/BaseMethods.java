@@ -24,9 +24,6 @@ public class BaseMethods extends Driver {
 
     public WebDriver driver;   // burada herkes kafasına göre setlemesin, değer vermesin
     public FluentWait<WebDriver> wait;
-
-    Actions actions;
-
     public JavascriptExecutor js;
     public BaseMethods(WebDriver driver){
         this.driver = driver; // hangi webDriver, constructor yapmazsak driver null olarak dönecek, bu driver Driver class'ından alınan driver demek istiyoruz
